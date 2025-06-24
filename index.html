@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Résidence Les Jardins du Parc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap');
+        :root {
+            --primary: #2d5c3b;
+            --secondary: #e2b04a;
+            --accent: #f5f8f2;
+            --bg: #f9fafb;
+            --white: #fff;
+            --shadow: 0 8px 32px rgba(45,92,59,0.10);
+            --highlight: #7ed957;
+            --cta: #e2b04a;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Montserrat', 'Roboto', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+        }
+        header {
+            background: linear-gradient(120deg, var(--primary) 60%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 56px 0 36px 0;
+            text-align: center;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+        header p {
+            margin-top: 14px;
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 32px 0 0 0;
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.08em;
+            padding: 10px 24px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.10);
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+        }
+        nav a.active, nav a:hover {
+            background: var(--highlight);
+            color: var(--primary);
+            transform: scale(1.08);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 40px 40px 30px 40px;
+            position: relative;
+            top: -36px;
+        }
+        section {
+            margin-bottom: 54px;
+        }
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero img {
+            width: 370px;
+            border-radius: 20px;
+            box-shadow: 0 6px 28px rgba(45,92,59,0.11);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+        .hero-text {
+            flex: 1;
+            min-width: 260px;
+        }
+        .hero-text h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .hero-text p {
+            font-size: 1.15em;
+            color: #2d5c3b;
+            line-height: 1.7;
+        }
+        .cta-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 32px;
+            background: var(--cta);
+            color: var(--primary);
+            border: none;
+            border-radius: 24px;
+            font-size: 1.08em;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(226,176,74,0.13);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            text-decoration: none;
+        }
+        .cta-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.08);
+        }
+        .products h2, .services h2, .about h2, .contact h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+        }
+        .product-item {
+            background: var(--accent);
+            border-radius: 16px;
+            padding: 28px 18px 22px 18px;
+            box-shadow: 0 2px 14px rgba(45,92,59,0.07);
+            text-align: center;
+            transition: transform 0.18s, box-shadow 0.18s, background 0.3s;
+            position: relative;
+        }
+        .product-item:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 8px 32px rgba(45,92,59,0.14);
+            background: var(--highlight);
+        }
+        .product-item img {
+            width: 100%;
+            max-width: 180px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .product-item h3 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 1.15em;
+            font-weight: 700;
+        }
+        .product-item p {
+            margin: 0 0 10px 0;
+            color: #2d5c3b;
+            font-size: 1em;
+        }
+        .product-item .price {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+        }
+        .service-item {
+            background: var(--accent);
+            border-radius: 14px;
+            padding: 22px 16px;
+            min-width: 200px;
+            box-shadow: 0 2px 12px rgba(45,92,59,0.07);
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s, background 0.3s;
+        }
+        .service-item:hover {
+            box-shadow: 0 8px 32px rgba(45,92,59,0.14);
+            transform: scale(1.05);
+            background: var(--cta);
+            color: var(--primary);
+        }
+        .service-item .emoji {
+            font-size: 2em;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .about {
+            background: var(--accent);
+            border-radius: 16px;
+            padding: 28px 18px;
+            box-shadow: 0 2px 14px rgba(45,92,59,0.07);
+        }
+        .about p {
+            font-size: 1.1em;
+            color: #2d5c3b;
+            line-height: 1.7;
+        }
+        .contact {
+            background: var(--highlight);
+            border-radius: 16px;
+            padding: 28px 18px;
+            box-shadow: 0 2px 14px rgba(126,217,87,0.10);
+            text-align: center;
+        }
+        .contact p {
+            font-size: 1.1em;
+            color: #2d5c3b;
+            line-height: 1.7;
+        }
+        .contact a {
+            color: var(--primary);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            padding: 28px 0;
+            background: var(--primary);
+            color: var(--white);
+            margin-top: 48px;
+            border-radius: 0 0 24px 24px;
+            font-size: 1em;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 1000px) {
+            .container {
+                padding: 20px 4vw 12px 4vw;
+            }
+            .hero img {
+                width: 100%;
+                max-width: 370px;
+            }
+        }
+        @media (max-width: 700px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .container {
+                padding: 8px 2vw 6px 2vw;
+            }
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+            .services-list {
+                flex-direction: column;
+                gap: 14px;
+            }
+            .contact {
+                padding: 14px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Résidence Les Jardins du Parc</h1>
+        <p>Votre nouvelle vie commence ici : confort, sécurité et services haut de gamme</p>
+        <nav>
+            <a href="#accueil" class="active">Accueil</a>
+            <a href="#logements">Logements</a>
+            <a href="#services">Services</a>
+            <a href="#apropos">À propos</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="hero" id="accueil">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Résidence Les Jardins du Parc">
+            <div class="hero-text">
+                <h2>Bienvenue à la Résidence Les Jardins du Parc</h2>
+                <p>
+                    Découvrez une résidence moderne et chaleureuse, pensée pour votre bien-être. Appartements lumineux, espaces verts, sécurité 24h/24 et une équipe à votre écoute. Profitez d’un cadre de vie exceptionnel au cœur de la ville.
+                </p>
+                <a href="#logements" class="cta-btn">Voir les logements</a>
+            </section>
+            <section class="products" id="logements">
+                <h2>Nos Logements</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Studio">
+                        <h3>Studio Confort</h3>
+                        <p>Idéal pour une personne, cuisine équipée, salle de bain moderne, balcon privatif.</p>
+                        <div class="price">À partir de 650€/mois</div>
+                        <a href="#contact" class="cta-btn">Demander une visite</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80" alt="T2">
+                        <h3>Appartement T2</h3>
+                        <p>Chambre séparée, grand séjour, cuisine ouverte, terrasse avec vue sur le parc.</p>
+                        <div class="price">À partir de 950€/mois</div>
+                        <a href="#contact" class="cta-btn">Demander une visite</a>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80" alt="T3">
+                        <h3>Appartement T3 Premium</h3>
+                        <p>Deux chambres, séjour spacieux, double salle de bain, prestations haut de gamme.</p>
+                        <div class="price">À partir de 1250€/mois</div>
+                        <a href="#contact" class="cta-btn">Demander une visite</a>
+                    </div>
+                </div>
+            </section>
+            <section class="services" id="services">
+                <h2>Nos Services</h2>
+                <div class="services-list">
+                    <div class="service-item">
+                        <span class="emoji">☕</span>
+                        <h3>Café Lounge</h3>
+                        <p>Un espace convivial pour se détendre, rencontrer les résidents et savourer une boisson chaude dans une ambiance élégante.</p>
+                        <button class="cta-btn custom-btn" data-url="https://tommes136.github.io/Cafee/">Découvrir</button>
+                    </div>
+                    <div class="service-item">
+                        <span class="emoji">🎶</span>
+                        <h3>Conservatoire</h3>
+                        <p>Des ateliers musicaux et des concerts réguliers pour enrichir votre quotidien et stimuler votre créativité.</p>
+                        <button class="cta-btn custom-btn" data-url="https://tommes136.github.io/Conservatoire/">Découvrir</button>
+                    </div>
+                    <div class="service-item">
+                        <span class="emoji">🌳</span>
+                        <h3>Jardin Privé</h3>
+                        <p>Profitez d’un espace vert entretenu, idéal pour la promenade, la détente ou le jardinage en toute tranquillité.</p>
+                        <button class="cta-btn custom-btn" data-url="https://tommes136.github.io/Jardin/">Découvrir</button>
+                    </div>
+                </div>
+            </section>
+            <style>
+                .services-list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 32px;
+                    justify-content: center;
+                    margin-top: 32px;
+                }
+                .service-item {
+                    background: linear-gradient(120deg, #f5f8f2 70%, #e2b04a 100%);
+                    border-radius: 18px;
+                    padding: 32px 28px 28px 28px;
+                    min-width: 240px;
+                    max-width: 320px;
+                    box-shadow: 0 4px 24px rgba(45,92,59,0.10);
+                    text-align: center;
+                    transition: box-shadow 0.2s, transform 0.2s, background 0.3s;
+                    position: relative;
+                    overflow: hidden;
+                }
+                .service-item:hover {
+                    box-shadow: 0 10px 36px rgba(226,176,74,0.18);
+                    transform: translateY(-6px) scale(1.04);
+                    background: linear-gradient(120deg, #e2b04a 60%, #7ed957 100%);
+                }
+                .service-item .emoji {
+                    font-size: 2.6em;
+                    margin-bottom: 12px;
+                    display: block;
+                    filter: drop-shadow(0 2px 8px rgba(45,92,59,0.10));
+                }
+                .service-item h3 {
+                    margin: 0 0 10px 0;
+                    color: var(--primary);
+                    font-size: 1.22em;
+                    font-weight: 700;
+                    letter-spacing: 0.5px;
+                }
+                .service-item p {
+                    color: #2d5c3b;
+                    font-size: 1.08em;
+                    margin-bottom: 18px;
+                    min-height: 60px;
+                }
+                .service-item .cta-btn {
+                    margin-top: 0;
+                    padding: 10px 26px;
+                    font-size: 1em;
+                    border-radius: 20px;
+                    background: var(--primary);
+                    color: var(--white);
+                    box-shadow: 0 2px 10px rgba(45,92,59,0.09);
+                    transition: background 0.2s, color 0.2s, transform 0.2s;
+                }
+                .service-item .cta-btn:hover {
+                    background: var(--highlight);
+                    color: var(--primary);
+                    transform: scale(1.07);
+                }
+                @media (max-width: 900px) {
+                    .services-list {
+                        flex-direction: column;
+                        gap: 18px;
+                    }
+                    .service-item {
+                        max-width: 100%;
+                    }
+                }
+                
+            </style>
+                    </style>
+                    <section class="about" id="apropos">
+                        <h2>À propos</h2>
+                        <div class="about-content">
+                            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Jardins du Parc" class="about-img">
+                            <div class="about-text">
+                                <p>
+                                    <strong>La Résidence Les Jardins du Parc</strong> vous accueille dans un cadre moderne, verdoyant et convivial, pensé pour votre bien-être et votre sérénité.<br><br>
+                                    Notre équipe dévouée veille chaque jour à votre confort, en proposant des services personnalisés et un accompagnement attentif.<br><br>
+                                    Profitez d’espaces communs chaleureux, d’activités variées et d’un environnement sécurisé pour une vie sociale riche et épanouissante.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <style>
+                        .about-content {
+                            display: flex;
+                            align-items: center;
+                            gap: 32px;
+                            flex-wrap: wrap;
+                        }
+                        .about-img {
+                            width: 220px;
+                            border-radius: 16px;
+                            box-shadow: 0 4px 18px rgba(45,92,59,0.13);
+                            object-fit: cover;
+                            aspect-ratio: 4/5;
+                            background: #fff;
+                        }
+                        .about-text {
+                            flex: 1 1 260px;
+                            min-width: 220px;
+                        }
+                        .about-text p {
+                            font-size: 1.13em;
+                            color: #2d5c3b;
+                            line-height: 1.8;
+                            margin: 0;
+                        }
+                        @media (max-width: 700px) {
+                            .about-content {
+                                flex-direction: column;
+                                text-align: center;
+                                gap: 18px;
+                            }
+                            .about-img {
+                                width: 100%;
+                                max-width: 320px;
+                            }
+                        }
+                    </style>
+                    <section class="contact" id="contact">
+                        <h2>Contactez-nous</h2>
+                        <div class="contact-card">
+                            <div class="contact-info">
+                                <div class="contact-row">
+                                    <span class="contact-icon-bg">
+                                        <img src="https://img.icons8.com/color/48/phone.png" alt="Téléphone" class="contact-icon">
+                                    </span>
+                                    <span><strong>Téléphone :</strong> <a href="tel:+33123456789">01 23 45 67 89</a></span>
+                                </div>
+                                <div class="contact-row">
+                                    <span class="contact-icon-bg">
+                                        <img src="https://img.icons8.com/color/48/new-post.png" alt="Email" class="contact-icon">
+                                    </span>
+                                    <span><strong>Email :</strong> <a href="mailto:contact@jardinsduparc.fr">contact@jardinsduparc.fr</a></span>
+                                </div>
+                                <div class="contact-row">
+                                    <span class="contact-icon-bg">
+                                        <img src="https://img.icons8.com/color/48/marker.png" alt="Adresse" class="contact-icon">
+                                    </span>
+                                    <span>12 avenue du Parc, 75000 Paris</span>
+                                </div>
+                            </div>
+                            <form class="contact-form" autocomplete="off">
+                                <div class="input-group">
+                                    <input type="text" name="nom" placeholder="Votre nom" required>
+                                </div>
+                                <div class="input-group">
+                                    <input type="email" name="email" placeholder="Votre email" required>
+                                </div>
+                                <div class="input-group">
+                                    <textarea name="message" rows="3" placeholder="Votre message" required></textarea>
+                                </div>
+                                <button type="submit" class="cta-btn">Envoyer</button>
+                            </form>
+                        </div>
+                    </section>
+                    <style>
+                        .contact-card {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            gap: 40px;
+                            background: linear-gradient(120deg, #f5f8f2 80%, #e2b04a 100%);
+                            border-radius: 22px;
+                            box-shadow: 0 6px 32px rgba(45,92,59,0.13);
+                            padding: 38px 36px;
+                            margin: 0 auto;
+                            max-width: 800px;
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        .contact-info {
+                            flex: 1 1 240px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 26px;
+                            min-width: 220px;
+                        }
+                        .contact-row {
+                            display: flex;
+                            align-items: center;
+                            gap: 16px;
+                            font-size: 1.13em;
+                            color: var(--primary);
+                            background: rgba(226,176,74,0.07);
+                            /* 7ed957 removed */
+                            padding: 10px 18px;
+                            border-radius: 12px;
+                            box-shadow: 0 2px 10px rgba(45,92,59,0.06);
+                            transition: background 0.2s;
+                        }
+                        .contact-row:hover {
+                            background: rgba(226,176,74,0.13);
+                        }
+                        .contact-icon-bg {
+                            background: linear-gradient(135deg, #e2b04a 60%, #e2b04a 100%);
+                            /* 7ed957 removed */
+                            border-radius: 50%;
+                            padding: 6px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            box-shadow: 0 2px 8px rgba(45,92,59,0.09);
+                        }
+                        .contact-icon {
+                            width: 28px;
+                            height: 28px;
+                            background: none;
+                            border-radius: 0;
+                            box-shadow: none;
+                            padding: 0;
+                            display: block;
+                        }
+                        .contact-form {
+                            flex: 1 1 320px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 18px;
+                            min-width: 240px;
+                            background: #fff;
+                            border-radius: 16px;
+                            box-shadow: 0 2px 14px rgba(45,92,59,0.07);
+                            padding: 28px 22px 22px 22px;
+                            position: relative;
+                        }
+                        .input-group {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 4px;
+                        }
+                        .contact-form input,
+                        .contact-form textarea {
+                            border: 1.5px solid var(--secondary);
+                            /* 7ed957 removed */
+                            border-radius: 10px;
+                            padding: 12px 16px;
+                            font-size: 1.08em;
+                            font-family: inherit;
+                            background: #f9fafb;
+                            transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+                            outline: none;
+                            resize: none;
+                            box-shadow: 0 1px 6px rgba(45,92,59,0.04);
+                        }
+                        .contact-form input:focus,
+                        .contact-form textarea:focus {
+                            border: 2px solid var(--secondary);
+                            box-shadow: 0 2px 12px rgba(226,176,74,0.13);
+                            background: #fff;
+                        }
+                        .contact-form button.cta-btn {
+                            align-self: flex-end;
+                            margin-top: 10px;
+                            font-size: 1.08em;
+                            padding: 12px 36px;
+                            border-radius: 22px;
+                            background: linear-gradient(120deg, var(--secondary) 60%, var(--secondary) 100%);
+                            /* 7ed957 removed */
+                            color: var(--primary);
+                            font-weight: 700;
+                            box-shadow: 0 2px 12px rgba(226,176,74,0.13);
+                            transition: background 0.2s, color 0.2s, transform 0.2s;
+                        }
+                        .contact-form button.cta-btn:hover {
+                            background: var(--primary);
+                            color: var(--white);
+                            transform: scale(1.08);
+                        }
+                        @media (max-width: 900px) {
+                            .contact-card {
+                                flex-direction: column;
+                                padding: 22px 8vw;
+                                gap: 24px;
+                            }
+                            .contact-form {
+                                padding: 18px 8px 14px 8px;
+                            }
+                        }
+                        @media (max-width: 700px) {
+                            .contact-card {
+                                padding: 12px 2vw;
+                                gap: 14px;
+                            }
+                            .contact-form button.cta-btn {
+                                width: 100%;
+                            }
+                        }
+                    </style>
+                    <script>
+                        // Boutons custom services
+                        document.querySelectorAll('.custom-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                const url = this.getAttribute('data-url');
+                                if (url) {
+                                    window.location.href = url;
+                                }
+                            });
+                        });
+
+                        // Formulaire de contact (affiche une alerte pour la démo)
+                        document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            alert('Merci pour votre message ! Nous vous répondrons rapidement.');
+                            this.reset();
+                        });
+                    </script>   
